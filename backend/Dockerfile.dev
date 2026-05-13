@@ -1,0 +1,16 @@
+FROM node:20-slim
+RUN apt-get update -y && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+
+# Install deps first (cached layer)
+COPY package*.json ./
+COPY prisma ./prisma/
+RUN npm install
+# Generate Prisma client into node_modules
+RUN npm run generate
+
+# Source is mounted at runtime — no COPY src here
+EXPOSE 3001
+
+# Run migrations then start ts-node-dev for hot reload
+CMD sh -c "npx prisma migrate deploy && npm run dev"
