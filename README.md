@@ -1,9 +1,5 @@
 # IoT Data Reader
 
-**A robust, production-grade full-stack solution for processing and storing IoT sensor data from large CSV files.**
-
-This application efficiently ingests sensor readings from multiple CSV files in a target directory, performs data validation and deduplication, and persists them into a PostgreSQL database. It features parallel processing for scalability, comprehensive error handling for malformed records, and a modern React dashboard for real-time monitoring and data exploration.
-
 ## Quick Configuration
 
 **Configure Target Directory and Database (as per requirements):**
